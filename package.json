@@ -3,9 +3,7 @@
   "version": "1.0.0",
   "description": "A node.js wrapper for the exacttarget API.",
   "author": {
-    "name": "Blair Anderson",
-    "company": "Quick Left inc.",
-    "email": "blair@quickleft.com"
+    "name": "Blair Anderson"
   },
   "license": "MIT",
   "main": "./lib/exacttarget",
@@ -15,9 +13,7 @@
   },
   "dependencies": {
     "async": "^0.9.0",
-    "lodash": "^2.4.1",
     "querystring": "^0.2.0",
-    "request": "2.x.x",
     "soap": "^0.5.0"
   }
 }
