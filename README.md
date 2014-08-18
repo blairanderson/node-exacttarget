@@ -50,24 +50,36 @@ The error object is null when no error occured. The results object contains all 
 Example:
 
 ```javascript
-var ExactTargetAPI = require('exacttarget');
+var ExactTarget = require('node-exacttarget');
 
-var token = 'a users exacttarget API token';
+var client;
 
 try {
-    var api = exacttargetAPI({
-      token: token,
-      version : 'v3'
-    });
+  client = exacttargetAPI();
 } catch (error) {
-    console.log(error.message); // the options are missing, this function throws an error.
+    console.log(error); // the options are missing, this function throws an error.
 }
+client = exacttargetAPI({
+    username: process.env.USERNAME,
+    password: process.env.PASSWORD
+  });
 
-api.sources({ user_id: 30 }, function (error, data) {
-    if (error)
+// IF you have an oauth token, you can use that instead. 
+token = 'a users exacttarget API token';
+client = exacttargetAPI({token: token});
+
+
+// login
+// - will confirm that the username/password is correct.
+// - will conrirm that the WSDL is correct. 
+
+client.login({}, function (error, data) {
+  
+    if (error) {
         console.log(error.message);
-    else
+    } else {
         console.log(JSON.stringify(data)); // Do something with your data!
+    }
 });
 
 ```
